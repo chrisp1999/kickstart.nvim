@@ -193,6 +193,19 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- [[ Window navigation ]]
+vim.keymap.set('n', '<leader>h', '<C-w>h', { desc = 'Navigate to left window' })
+vim.keymap.set('n', '<leader>j', '<C-w>j', { desc = 'Navigate to bottom window' })
+vim.keymap.set('n', '<leader>k', '<C-w>k', { desc = 'Navigate to top window' })
+vim.keymap.set('n', '<leader>l', '<C-w>l', { desc = 'Navigate to right window' })
+
+vim.keymap.set('n', '<leader>th', '<cmd>split<CR><cmd>term<CR>12<C-w>- i', { desc = 'Open terminal horizontally' })
+vim.keymap.set('n', '<leader>tv', '<cmd>vs<CR><cmd>term<CR>50<C-w>< i', { desc = 'Open terminal vertically' })
+
+-- [[ Custom Keymaps for different languages ]]
+vim.keymap.set('n', '<leader>ghcih', '<cmd>split<CR><cmd>term<CR>12<C-w>- i ghci<CR>', { desc = 'Open ghci terminal horizontally' })
+vim.keymap.set('n', '<leader>ghciv', '<cmd>vs<CR><cmd>term<CR>50<C-w>< i ghci<CR>', { desc = 'Open ghci terminal vertically' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
