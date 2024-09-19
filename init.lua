@@ -197,8 +197,21 @@ vim.keymap.set('n', '<leader>th', '<cmd>split<CR><cmd>term<CR> i', { desc = 'Ope
 vim.keymap.set('n', '<leader>tv', '<cmd>vs<CR><cmd>term<CR> i', { desc = 'Open [T]erminal [V]ertically' })
 
 -- [[ Custom Keymaps for different languages ]]
-vim.keymap.set('n', '<leader>ghcih', '<cmd>split<CR><cmd>term<CR> i ghci<CR>', { desc = 'Open [GHCI] terminal [H]orizontally' })
-vim.keymap.set('n', '<leader>ghciv', '<cmd>vs<CR><cmd>term<CR> i ghci<CR>', { desc = 'Open [GHCI] terminal [V]ertically' })
+vim.keymap.set('n', '<leader>ghcih', function()
+  local filePath = vim.fn.expand '%:p'
+  if string.match(filePath, '%.hs$') then
+    return '<cmd>split<CR><cmd>term<CR> i ghci ' .. filePath .. '<CR>'
+  end
+  return '<cmd>split<CR><cmd>term<CR> i ghci<CR>'
+end, { desc = 'Open [GHCI] terminal [H]orizontally', expr = true })
+
+vim.keymap.set('n', '<leader>ghciv', function()
+  local filePath = vim.fn.expand '%:p'
+  if string.match(filePath, '%.hs$') then
+    return '<cmd>vs<CR><cmd>term<CR> i ghci ' .. filePath .. '<CR>'
+  end
+  return '<cmd>vs<CR><cmd>term<CR> i ghci<CR>'
+end, { desc = 'Open [GHCI] terminal [V]ertically', expr = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
