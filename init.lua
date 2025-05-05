@@ -505,23 +505,6 @@ require('lazy').setup({
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
 
-      -- Allows extra capabilities provided by nvim-cmp
-      {
-        'hrsh7th/cmp-nvim-lsp',
-        config = function()
-          local cmp = require 'cmp'
-          cmp.setup {
-            sources = cmp.config.sources({ { name = 'nvim_lsp' } }, { { name = 'buffer' } }),
-            mapping = cmp.mapping.preset.insert {
-              -- ['<C-b>'] = cmp.mapping.scroll_docs(-4)
-              -- ['<C-f>'] = cmp.mapping.scroll_docs(4)
-              ['<C-Space>'] = cmp.mapping.complete(),
-              ['<C-e>'] = cmp.mapping.abort(),
-              ['<CR>'] = cmp.mapping.confirm { select = true },
-            },
-          }
-        end,
-      },
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
     },
@@ -878,7 +861,7 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'enter',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
